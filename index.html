@@ -19,6 +19,34 @@
         0%   { transform: translateX(-50%) rotate(0deg); }
         100% { transform: translateX(-50%) rotate(360deg); }
       }
+@keyframes cosmicFadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(0deg);
+    filter: drop-shadow(0 0 0px #62a7fe);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05) rotate(180deg);
+    filter: drop-shadow(0 0 8px #62a7fe);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+    filter: drop-shadow(0 0 4px #62a7fe);
+  }
+}
+
+#unity-logo {
+  background-image: url('TemplateData/dcicon.png'); /* Reemplaza con tu ruta */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max(20vw, 20vh);
+  height: max(20vw, 20vh);
+  margin: auto;
+  animation: cosmicFadeZoom 2s ease-out forwards;
+}
     </style>
   </head>
   <body>
@@ -71,7 +99,7 @@
     <div id="unity-container">
       <canvas id="unity-canvas" width=720 height=1080 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
+        <img id="unity-logo" src="TemplateData/dcicon.png" alt="Logo cósmico">
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
@@ -176,6 +204,7 @@
           meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
           document.getElementsByTagName('head')[0].appendChild(meta);
         }
+        canvas.style.background = "url('" + buildUrl + "/Orion.jpg') center / cover";
         loadingBar.style.display = "block";
         var script = document.createElement("script");
         script.src = loaderUrl;
